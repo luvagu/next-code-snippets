@@ -1,13 +1,21 @@
+import { useState } from "react"
+
 export default function Code({ code }) {
 	const [showCode, setShowCode] = useState(false)
 	const [copyText, setCopyText] = useState('Copy')
+
 	const copyCode = async () => {
-		await navigator.clipboard.writeText(code)
-		setCopyText('✅ Copied!')
-		setTimeout(() => {
-			setCopyText('Copy')
-		}, 1000)
+		try {
+            await navigator.clipboard.writeText(code)
+            setCopyText('✅ Copied!')
+            setTimeout(() => {
+                setCopyText('Copy')
+            }, 1000)
+        } catch (error) {
+            console.log(error)
+        }
 	}
+
 	return (
 		<div>
 			<button

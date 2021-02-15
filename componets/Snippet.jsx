@@ -1,3 +1,7 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import Code from './Code'
+
 export default function Snippet({ snippet, snippetDeleted }) {
 	const router = useRouter()
 

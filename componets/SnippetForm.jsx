@@ -1,3 +1,7 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+
 export default function SnippetForm({ snippet }) {
 	const { register, handleSubmit, errors, reset } = useForm({
 		defaultValues: {
@@ -7,6 +11,7 @@ export default function SnippetForm({ snippet }) {
 			name: snippet ? snippet.data.name : '',
 		},
 	})
+
 	const router = useRouter()
 
 	const createSnippet = async data => {
@@ -41,6 +46,7 @@ export default function SnippetForm({ snippet }) {
 			console.error(err)
 		}
 	}
+
 	return (
 		<form onSubmit={handleSubmit(snippet ? updateSnippet : createSnippet)}>
 			<div className="mb-4">
