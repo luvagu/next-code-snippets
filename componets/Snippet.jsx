@@ -1,10 +1,7 @@
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import Code from './Code'
 
 export default function Snippet({ snippet, snippetDeleted }) {
-	const router = useRouter()
-
 	const deleteSnippet = async () => {
 		try {
 			await fetch('/api/deleteSnippet', {
@@ -14,11 +11,14 @@ export default function Snippet({ snippet, snippetDeleted }) {
 					'Content-Type': 'application/json',
 				},
 			})
+
 			snippetDeleted()
+
 		} catch (err) {
 			console.error(err)
 		}
 	}
+    
 	return (
 		<div className="bg-gray-100 p-4 rounded-md my-2 shadow-lg">
 			<div className="flex items-center justify-between mb-2">

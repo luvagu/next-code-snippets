@@ -1,18 +1,22 @@
-import { createSnippet } from '../../utils/faunadb'
+import { createSnippetInDB } from '../../utils/faunadb'
 
 export default async function handler(req, res) {
 	const { code, language, description, name } = req.body
+
 	if (req.method !== 'POST') {
 		return res.status(405).json({ msg: 'Method not allowed' })
 	}
+
 	try {
-		const createdSnippet = await createSnippet(
+		const createdSnippet = await createSnippetInDB(
 			code,
 			language,
 			description,
 			name
 		)
+		
 		return res.status(200).json(createdSnippet)
+
 	} catch (err) {
 		console.error(err)
 		res.status(500).json({ msg: 'Something went wrong.' })

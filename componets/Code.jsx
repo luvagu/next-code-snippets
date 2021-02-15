@@ -11,6 +11,7 @@ export default function Code({ code }) {
             setTimeout(() => {
                 setCopyText('Copy')
             }, 1000)
+            
         } catch (error) {
             console.log(error)
         }

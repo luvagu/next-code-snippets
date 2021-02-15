@@ -14,8 +14,9 @@ export default function SnippetForm({ snippet }) {
 
 	const router = useRouter()
 
-	const createSnippet = async data => {
+	const createSnippet = async (data) => {
 		const { code, language, description, name } = data
+
 		try {
 			await fetch('/api/createSnippet', {
 				method: 'POST',
@@ -24,15 +25,18 @@ export default function SnippetForm({ snippet }) {
 					'Content-Type': 'application/json',
 				},
 			})
+
 			router.push('/')
+
 		} catch (err) {
 			console.error(err)
 		}
 	}
 
-	const updateSnippet = async data => {
+	const updateSnippet = async (data) => {
 		const { code, language, description, name } = data
 		const id = snippet.id
+
 		try {
 			await fetch('/api/updateSnippet', {
 				method: 'PUT',
@@ -41,7 +45,9 @@ export default function SnippetForm({ snippet }) {
 					'Content-Type': 'application/json',
 				},
 			})
+
 			router.push('/')
+
 		} catch (err) {
 			console.error(err)
 		}
@@ -80,9 +86,10 @@ export default function SnippetForm({ snippet }) {
 					className="w-full border bg-white rounded px-3 py-2 outline-none text-gray-700"
 					ref={register({ required: true })}
 				>
-					<option className="py-1">JavaScript</option>
 					<option className="py-1">HTML</option>
 					<option className="py-1">CSS</option>
+					<option className="py-1">JavaScript</option>
+					<option className="py-1">Python</option>
 				</select>
 				{errors.language && (
 					<p className="font-bold text-red-900">Language is required</p>

@@ -40,7 +40,7 @@ const getSnippetById = async (id) => {
 	}
 }
 
-const createSnippet = async (code, language, description, name) => {
+const createSnippetInDB = async (code, language, description, name) => {
 	try {
 		return await faunaClient.query(
 			query.Create(query.Collection('snippets'), {
@@ -52,7 +52,7 @@ const createSnippet = async (code, language, description, name) => {
 	}
 }
 
-const updateSnippet = async (id, code, language, name, description) => {
+const updateSnippetInDB = async (id, code, language, name, description) => {
 	try {
 		return await faunaClient.query(
 			query.Update(query.Ref(query.Collection('snippets'), id), {
@@ -64,21 +64,20 @@ const updateSnippet = async (id, code, language, name, description) => {
 	}
 }
 
-const deleteSnippet = async (id) => {
+const deleteSnippetInDB = async (id) => {
 	try {
 		return await faunaClient.query(
 			query.Delete(query.Ref(query.Collection('snippets'), id))
 		)
-
 	} catch (error) {
 		console.log(error)
 	}
 }
 
 module.exports = {
-	createSnippet,
+	createSnippetInDB,
 	getSnippets,
 	getSnippetById,
-	updateSnippet,
-	deleteSnippet,
+	updateSnippetInDB,
+	deleteSnippetInDB,
 }

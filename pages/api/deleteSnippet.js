@@ -1,4 +1,4 @@
-import { deleteSnippet } from '../../utils/faunaDB'
+import { deleteSnippetInDB } from '../../utils/faunaDB'
 
 export default async function handler(req, res) {
 	if (req.method !== 'DELETE') {
@@ -9,8 +9,9 @@ export default async function handler(req, res) {
 	console.log(req.body.id)
 	const { id } = req.body
 	console.log(id)
+
 	try {
-		const deleted = await deleteSnippet(id)
+		const deleted = await deleteSnippetInDB(id)
 		return res.status(200).json(deleted)
 	} catch (err) {
 		console.error(err)
