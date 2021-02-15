@@ -1,4 +1,4 @@
-import { getSnippets } from '../../utils/faunaDB'
+import { getSnippets } from '../../utils/fauna.helpers'
 
 export default async function handler(req, res) {
 	if (req.method !== 'GET') {

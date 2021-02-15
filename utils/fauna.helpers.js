@@ -11,11 +11,13 @@ const getSnippets = async () => {
 			)
 		)
 	
-		const snippets = data.map(snippet => {
-			snippet.id = snippet.ref.id
-			delete snippet.ref
-			return snippet
-		})
+		const snippets = data
+			.map(snippet => {
+				snippet.id = snippet.ref.id
+				delete snippet.ref
+				return snippet
+			})
+			// .sort(({id:a}, {id:b}) => b - a)
 	
 		return snippets
 
@@ -40,7 +42,7 @@ const getSnippetById = async (id) => {
 	}
 }
 
-const createSnippetInDB = async (code, language, description, name) => {
+const createSnippet = async (code, language, description, name) => {
 	try {
 		return await faunaClient.query(
 			query.Create(query.Collection('snippets'), {
@@ -52,7 +54,7 @@ const createSnippetInDB = async (code, language, description, name) => {
 	}
 }
 
-const updateSnippetInDB = async (id, code, language, name, description) => {
+const updateSnippet = async (id, code, language, name, description) => {
 	try {
 		return await faunaClient.query(
 			query.Update(query.Ref(query.Collection('snippets'), id), {
@@ -64,7 +66,7 @@ const updateSnippetInDB = async (id, code, language, name, description) => {
 	}
 }
 
-const deleteSnippetInDB = async (id) => {
+const deleteSnippet = async (id) => {
 	try {
 		return await faunaClient.query(
 			query.Delete(query.Ref(query.Collection('snippets'), id))
@@ -75,9 +77,9 @@ const deleteSnippetInDB = async (id) => {
 }
 
 module.exports = {
-	createSnippetInDB,
 	getSnippets,
 	getSnippetById,
-	updateSnippetInDB,
-	deleteSnippetInDB,
+	createSnippet,
+	updateSnippet,
+	deleteSnippet,
 }

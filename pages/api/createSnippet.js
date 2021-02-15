@@ -1,4 +1,4 @@
-import { createSnippetInDB } from '../../utils/faunadb'
+import { createSnippet } from '../../utils/fauna.helpers'
 
 export default async function handler(req, res) {
 	const { code, language, description, name } = req.body
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 	}
 
 	try {
-		const createdSnippet = await createSnippetInDB(
+		const createdSnippet = await createSnippet(
 			code,
 			language,
 			description,

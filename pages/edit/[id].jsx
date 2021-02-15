@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import SnippetForm from '../../componets/SnippetForm'
-import { getSnippetById } from '../../utils/faunadb'
+import { getSnippetById } from '../../utils/fauna.helpers'
 
 export default function EditSnippet({ snippet }) {
 	return (
