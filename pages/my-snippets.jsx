@@ -31,3 +31,22 @@ export default function MySnippets() {
 }
 
 export const getServerSideProps = withPageAuthRequired()
+
+// Alternative way passing snippets as props and without useSWR
+// export const getServerSideProps = withPageAuthRequired({
+// 	async getServerSideProps(context) {
+// 		try {
+// 			const session = getSession(context.req, context.res)
+// 			const userId = session.user.sub
+// 			const snippets = await getSnippetByUserId(userId)
+// 			return {
+// 				props: { snippets }
+// 			}
+// 		} catch (error) {
+// 			console.error(error)
+// 			context.res.statusCode = 302
+// 			context.res.setHeader('Location', `/`)
+// 			return { props: {} }
+// 		}
+// 	}
+// })
