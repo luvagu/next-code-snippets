@@ -53,11 +53,27 @@ export default function SnippetForm({ snippet }) {
 		}
 	}
 
+	const deleteSnippet = async () => {
+		try {
+			await fetch('/api/deleteSnippet', {
+				method: 'DELETE',
+				body: JSON.stringify({ id: snippet.id }),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+
+			router.push('/')
+		} catch (err) {
+			console.error(err)
+		}
+	}
+
 	return (
 		<form onSubmit={handleSubmit(snippet ? updateSnippet : createSnippet)}>
 			<div className="mb-4">
 				<label
-					className="block text-red-100 text-sm font-bold mb-1"
+					className="block text-white text-sm font-bold mb-1"
 					htmlFor="name"
 				>
 					Name
@@ -73,9 +89,10 @@ export default function SnippetForm({ snippet }) {
 					<p className="font-bold text-red-900">Name is required</p>
 				)}
 			</div>
+
 			<div className="mb-4">
 				<label
-					className="block text-red-100 text-sm font-bold mb-1"
+					className="block text-white text-sm font-bold mb-1"
 					htmlFor="language"
 				>
 					Language
@@ -95,9 +112,10 @@ export default function SnippetForm({ snippet }) {
 					<p className="font-bold text-red-900">Language is required</p>
 				)}
 			</div>
+
 			<div className="mb-4">
 				<label
-					className="block text-red-100 text-sm font-bold mb-1"
+					className="block text-white text-sm font-bold mb-1"
 					htmlFor="description"
 				>
 					Description
@@ -114,9 +132,10 @@ export default function SnippetForm({ snippet }) {
 					<p className="font-bold text-red-900">Description is required.</p>
 				)}
 			</div>
+
 			<div className="mb-4">
 				<label
-					className="block text-red-100 text-sm font-bold mb-1"
+					className="block text-white text-sm font-bold mb-1"
 					htmlFor="code"
 				>
 					Code
@@ -133,17 +152,29 @@ export default function SnippetForm({ snippet }) {
 					<p className="font-bold text-red-900">Code is required.</p>
 				)}
 			</div>
+
 			<button
-				className="bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-2"
+				className="bg-yellow-300 hover:bg-yellow-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4"
 				type="submit"
 			>
 				Save
 			</button>
+
 			<Link href="/">
-				<a className="mt-3 inline-block bg-red-800 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+				<a className="inline-block bg-gray-300 hover:bg-gray-400 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mr-4">
 					Cancel
 				</a>
 			</Link>
+			
+			{snippet && (
+				<button 
+					onClick={deleteSnippet} 
+					className="bg-red-500 hover:bg-red-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+					type="button"
+				>
+					Delete
+				</button>
+			)}
 		</form>
 	)
 }

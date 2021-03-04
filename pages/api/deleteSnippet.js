@@ -1,14 +1,20 @@
-import { deleteSnippet } from '../../utils/fauna.helpers'
+import { withApiAuthRequired, getSession } from '@auth0/nextjs-auth0'
+import { deleteSnippet, getSnippetById } from '../../utils/fauna.helpers'
 
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
+	const session = getSession(req, res)
+	const userId = session.user.sub
+
 	if (req.method !== 'DELETE') {
 		return res.status(405).json({ msg: 'Method not allowed' })
 	}
-
-	console.log(req.body)
-	console.log(req.body.id)
+	
 	const { id } = req.body
-	console.log(id)
+	const existingRecord = await getSnippetById(id)
+
+	if (!existingRecord || existingRecord.data.userId !== userId) {
+		return res.status(404).json({ msg: 'Record not found.' })
+	}
 
 	try {
 		const deleted = await deleteSnippet(id)
@@ -17,4 +23,4 @@ export default async function handler(req, res) {
 		console.error(err)
 		res.status(500).json({ msg: 'Something went wrong.' })
 	}
-}
+})
