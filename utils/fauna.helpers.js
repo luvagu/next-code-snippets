@@ -84,6 +84,8 @@ const getSnippetByUserId = async (userId) => {
 	}
 }
 
+
+
 const createSnippet = async (code, language, description, name, userId) => {
 	try {
 		return await faunaClient.query(
@@ -124,6 +126,7 @@ module.exports = {
 	getSnippets,
 	getSnippetById,
 	getSnippetByUserId,
+	getSnippetByLanguage,
 	createSnippet,
 	updateSnippet,
 	deleteSnippet,

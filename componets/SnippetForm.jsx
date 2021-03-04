@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
+import { getLanguages } from '../utils/languages'
 
 export default function SnippetForm({ snippet }) {
 	const { register, handleSubmit, errors, reset } = useForm({
@@ -103,10 +104,9 @@ export default function SnippetForm({ snippet }) {
 					className="w-full border bg-white rounded px-3 py-2 outline-none text-gray-700"
 					ref={register({ required: true })}
 				>
-					<option className="py-1">HTML</option>
-					<option className="py-1">CSS</option>
-					<option className="py-1">JavaScript</option>
-					<option className="py-1">Python</option>
+					{getLanguages().map(language => (
+						<option className="py-1">{language}</option>
+					))}
 				</select>
 				{errors.language && (
 					<p className="font-bold text-red-900">Language is required</p>
