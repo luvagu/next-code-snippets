@@ -5,7 +5,6 @@ import { getSnippetByLanguage } from '../../utils/fauna.helpers'
 import { getFormatedLang } from '../../utils/languages'
 
 export default function MySnippets({ lang, snippets }) {
-
 	return (
 		<>
 			<Head>
@@ -27,9 +26,9 @@ export default function MySnippets({ lang, snippets }) {
 }
 
 export const getServerSideProps = async (context) => {
-	const lang = getFormatedLang(context.params.lang)
-	const snippets = await getSnippetByLanguage(lang)
     try {
+		const lang = getFormatedLang(context.params.lang)
+		const snippets = await getSnippetByLanguage(lang)
         return {
             props: { lang, snippets }
         }
