@@ -11,7 +11,7 @@ export default function Navbar() {
                     EveryDay Snippets
                 </a>
             </Link>
-            <div className="flex space-x-3 justify-center items-center mb-6 m-x-auto">
+            <div className="flex flex-wrap space-x-3 justify-center items-center mb-6 m-x-auto">
                 {defaultLangs && defaultLangs.map((language, i) => (
                     <Link key={i} href={`/snippets/${language.toLocaleLowerCase()}`}>
                         <a className="text-gray-400 hover:underline">{language}</a>
