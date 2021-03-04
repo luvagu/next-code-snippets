@@ -1,5 +1,3 @@
-const languages = ['HTML', 'CSS', 'JavaScript', 'Python']
+export const defaultLangs = ['HTML', 'CSS', 'JavaScript', 'Python', 'Java', 'PHP']
 
-export const getLanguages = () => languages
-
-export const getFormatedLang = (lang) => languages.find(language => language.toLowerCase() === lang.toLowerCase())
+export const getFormatedLang = (lang) => defaultLangs.find(language => language.toLowerCase() === lang.toLowerCase().trim())
