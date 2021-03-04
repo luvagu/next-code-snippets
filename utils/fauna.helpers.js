@@ -84,7 +84,31 @@ const getSnippetByUserId = async (userId) => {
 	}
 }
 
+const getSnippetByLanguage = async (language) => {
+	try {
+		const { data } = await faunaClient.query(
+			FMap(
+				Paginate(
+					Match(Index('snippets_by_language'), language)
+				),
+				Lambda('ref', Get(Var('ref')))
+			)
+		)
 
+		const snippets = data
+			.map(snippet => {
+				snippet.id = snippet.ref.id
+				delete snippet.ref
+				return snippet
+			})
+			.sort(({id:a}, {id:b}) => b - a)
+	
+		return snippets
+
+	} catch (error) {
+		console.log(error)
+	}
+}
 
 const createSnippet = async (code, language, description, name, userId) => {
 	try {

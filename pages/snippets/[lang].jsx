@@ -5,6 +5,7 @@ import { getSnippetByLanguage } from '../../utils/fauna.helpers'
 import { getFormatedLang } from '../../utils/languages'
 
 export default function MySnippets({ lang, snippets }) {
+
 	return (
 		<>
 			<Head>
