@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Header from '../../componets/Header'
-import Snippet from '../../componets/Snippet'
+import Header from '../../components/Header'
+import Snippet from '../../components/Snippet'
 import { getSnippetByLanguage } from '../../utils/fauna.helpers'
 import { getFormatedLang } from '../../utils/languages'
 

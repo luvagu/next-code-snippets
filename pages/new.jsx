@@ -1,6 +1,6 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
-import SnippetForm from '../componets/SnippetForm'
+import SnippetForm from '../components/SnippetForm'
 
 export default function New() {
 	return (

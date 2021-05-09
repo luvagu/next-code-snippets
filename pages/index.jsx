@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import useSWR from 'swr'
-import Header from '../componets/Header'
-import Snippet from '../componets/Snippet'
+import Header from '../components/Header'
+import Snippet from '../components/Snippet'
 
 export default function Home() {
 	const { data: snippets, mutate } = useSWR('/api/getSnippets')
