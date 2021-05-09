@@ -37,4 +37,4 @@ npm run dev
 
 ## Live Demo
 
-Try the live demo at: 
+Try the live demo at: https://next-code-snippets.vercel.app
