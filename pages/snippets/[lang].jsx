@@ -12,30 +12,29 @@ export default function MySnippets({ lang, snippets }) {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="">
+			<main>
 				<Header title={`${lang} - Snippets`} />
 
 				{snippets &&
 					snippets.map((snippet) => (
 						<Snippet key={snippet.id} snippet={snippet} />
-					))
-                }
+					))}
 			</main>
 		</>
 	)
 }
 
 export const getServerSideProps = async (context) => {
-    try {
+	try {
 		const lang = getFormatedLang(context.params.lang)
 		const snippets = await getSnippetByLanguage(lang)
-        return {
-            props: { lang, snippets }
-        }
-    } catch (error) {
-        console.error(error)
-        context.res.statusCode = 302
-        context.res.setHeader('Location', `/`)
-        return { props: {} }
-    }
+		return {
+			props: { lang, snippets },
+		}
+	} catch (error) {
+		console.error(error)
+		context.res.statusCode = 302
+		context.res.setHeader('Location', `/`)
+		return { props: {} }
+	}
 }

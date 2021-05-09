@@ -18,7 +18,7 @@ export default withApiAuthRequired(async function handler(req, res) {
 			name,
 			userId
 		)
-		
+
 		return res.status(200).json(createdSnippet)
 	} catch (err) {
 		console.error(err)

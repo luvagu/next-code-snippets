@@ -8,7 +8,7 @@ export default withApiAuthRequired(async function handler(req, res) {
 	if (req.method !== 'DELETE') {
 		return res.status(405).json({ msg: 'Method not allowed' })
 	}
-	
+
 	const { id } = req.body
 	const existingRecord = await getSnippetById(id)
 

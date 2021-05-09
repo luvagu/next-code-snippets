@@ -25,7 +25,7 @@ export const getServerSideProps = withPageAuthRequired({
 			const id = context.params.id
 			const snippet = await getSnippetById(id)
 			return {
-				props: { snippet }
+				props: { snippet },
 			}
 		} catch (error) {
 			console.error(error)
@@ -33,5 +33,5 @@ export const getServerSideProps = withPageAuthRequired({
 			context.res.setHeader('Location', `/`)
 			return { props: {} }
 		}
-	}
+	},
 })

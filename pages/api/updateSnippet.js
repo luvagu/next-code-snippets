@@ -17,8 +17,14 @@ export default withApiAuthRequired(async function handler(req, res) {
 	}
 
 	try {
-		const updated = await updateSnippet(id, code, language, name, description)
-		console.log(updated);
+		const updated = await updateSnippet(
+			id,
+			code,
+			language,
+			name,
+			description
+		)
+		console.log(updated)
 		return res.status(200).json(updated)
 	} catch (err) {
 		console.error(err)

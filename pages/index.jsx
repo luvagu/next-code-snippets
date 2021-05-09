@@ -14,17 +14,19 @@ export default function Home() {
 			</Head>
 
 			<main>
-				<Header title='Handy Code Snippets' subTitle='Create and browse snippets you use every day in Web Development!' />
+				<Header
+					title="Handy Code Snippets"
+					subTitle="Create and browse snippets you use every day in Web Development!"
+				/>
 
 				{snippets &&
-					snippets.map(snippet => (
+					snippets.map((snippet) => (
 						<Snippet
 							key={snippet.id}
 							snippet={snippet}
 							snippetDeleted={mutate}
 						/>
-					))
-				}
+					))}
 			</main>
 		</>
 	)

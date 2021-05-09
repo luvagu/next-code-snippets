@@ -28,7 +28,6 @@ export default function SnippetForm({ snippet }) {
 			})
 
 			router.push('/')
-
 		} catch (err) {
 			console.error(err)
 		}
@@ -48,7 +47,6 @@ export default function SnippetForm({ snippet }) {
 			})
 
 			router.push('/')
-
 		} catch (err) {
 			console.error(err)
 		}
@@ -104,12 +102,17 @@ export default function SnippetForm({ snippet }) {
 					className="w-full border bg-white rounded px-3 py-2 outline-none text-gray-700"
 					ref={register({ required: true })}
 				>
-					{defaultLangs && defaultLangs.map((language, i) => (
-						<option key={i} className="py-1">{language}</option>
-					))}
+					{defaultLangs &&
+						defaultLangs.map((language, i) => (
+							<option key={i} className="py-1">
+								{language}
+							</option>
+						))}
 				</select>
 				{errors.language && (
-					<p className="font-bold text-red-900">Language is required</p>
+					<p className="font-bold text-red-900">
+						Language is required
+					</p>
 				)}
 			</div>
 
@@ -129,7 +132,9 @@ export default function SnippetForm({ snippet }) {
 					ref={register({ required: true })}
 				></textarea>
 				{errors.description && (
-					<p className="font-bold text-red-900">Description is required.</p>
+					<p className="font-bold text-red-900">
+						Description is required.
+					</p>
 				)}
 			</div>
 
@@ -165,10 +170,10 @@ export default function SnippetForm({ snippet }) {
 					Cancel
 				</a>
 			</Link>
-			
+
 			{snippet && (
-				<button 
-					onClick={deleteSnippet} 
+				<button
+					onClick={deleteSnippet}
 					className="bg-red-500 hover:bg-red-600 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
 					type="button"
 				>
