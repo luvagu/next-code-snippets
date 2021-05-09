@@ -13,7 +13,7 @@ export default function Navbar() {
             </Link>
             <div className="flex flex-wrap space-x-3 justify-center items-center mb-6 m-x-auto">
                 {defaultLangs && defaultLangs.map((language, i) => (
-                    <Link key={i} href={`/snippets/${language.toLocaleLowerCase()}`}>
+                    <Link key={i} href={`/snippets/${language.toLowerCase()}`}>
                         <a className="text-gray-400 hover:underline">{language}</a>
                     </Link>
                 ))}

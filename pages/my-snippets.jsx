@@ -32,7 +32,7 @@ export default function MySnippets() {
 
 export const getServerSideProps = withPageAuthRequired()
 
-// Alternative way passing snippets as props and without useSWR
+// Alternative way passing snippets as props and without api use useSWR('/api/getUserSnippets')
 // export const getServerSideProps = withPageAuthRequired({
 // 	async getServerSideProps(context) {
 // 		try {
