@@ -7,7 +7,7 @@
 
 > Next.js / FaunaDB / Auth0 / Tailwind CSS
 
-A fun and easy to use Next.js web app that let's you save your everyday code snippets.
+A fun and easy to use Next.js web app that let's you store everyday code snippets in a categorized fashion.
 
 ------
 
