@@ -13,6 +13,7 @@ const {
     Match,
 	Paginate,
 	Ref,
+	Update,
     Var
 } = faunadb.query
 

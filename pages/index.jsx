@@ -13,7 +13,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className="">
+			<main>
 				<Header title='Handy Code Snippets' subTitle='Create and browse snippets you use every day in Web Development!' />
 
 				{snippets &&
