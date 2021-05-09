@@ -19,6 +19,7 @@ A fun and easy to use Next.js web app that let's you save your everyday code sni
 - Protected routes using Auth0 hooks
 - Realtime Data and CRUD app with FaunaDB
 - Save and Sort snippets by categories
+- Styling with Tailwind CSS
 
 ## Cloning this repo
 
