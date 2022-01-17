@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://nextjs-blog-pied-iota.vercel.app">
+  <a href="https://next-code-snippets.vercel.app/">
     <img src="Screenshot.png" height="220">
     <h1 align="center">Next Code Snippets</h1>
   </a>
@@ -9,7 +9,7 @@
 
 A fun and easy to use Next.js web app that lets you store everyday code snippets in a categorized fashion.
 
-------
+---
 
 ## Main Features
 
